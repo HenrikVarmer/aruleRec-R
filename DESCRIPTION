@@ -1,17 +1,27 @@
 Package: aruleRec
-Title: Easy and fast Recommendations With Association Rule Learning in R
+Title: Easy and Fast Recommendations With Association Rule Learning in R
 Version: 0.0.0.9000
 Authors@R: person("Henrik", "Varmer", email = "henrik@varmer.dk", role = c("aut", "cre"))
-Description: The aruleRec function takes a dataframe as input in tidy (long) format with one observation (customer-item pair) per row. This data.frame must contain two columns: a customer ID and a product ID. The data.frame and column names must be provided as arguments to the function, along with the hyperparameters for association rule mining: confidence, support, minlen, and maxlen..
-Depends: 
+Description: aruleRec wraps the 'arules' package to turn tidy (long) customer-item
+    purchase data into per-customer cross-selling recommendations using
+    association rule learning (apriori). The input data.frame must contain a
+    customer ID column and a product ID column; column names and the rule-mining
+    hyperparameters (confidence, support, minlen, maxlen) are supplied as
+    arguments.
+License: MIT + file LICENSE
+URL: https://github.com/HenrikVarmer/aruleRec
+BugReports: https://github.com/HenrikVarmer/aruleRec/issues
+Depends:
     R (>= 3.5.1),
-    dplyr (>= 0.7.1),
     arules,
+    dplyr (>= 0.8.0),
     tidyr
+Imports:
+    arules,
+    dplyr,
+    tidyr
+Suggests:
+    testthat (>= 2.1.0)
 Encoding: UTF-8
 LazyData: true
-Imports:
-    dplyr,
-    arules,
-    tidyr
 RoxygenNote: 6.1.0

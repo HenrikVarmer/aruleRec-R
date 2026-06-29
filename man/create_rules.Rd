@@ -2,24 +2,34 @@
 % Please edit documentation in R/create_rules.R
 \name{create_rules}
 \alias{create_rules}
-\title{Mines the association rules for the subsequent recommendations}
+\title{Mine the association rules for the subsequent recommendations}
 \usage{
 create_rules(transactions, support, confidence, minlen, maxlen)
 }
 \arguments{
-\item{transactions}{A transaction object}
+\item{transactions}{A transactions object.}
 
-\item{support}{Minimum support of the mined association rules}
+\item{support}{Minimum support of the mined association rules.}
 
-\item{confidence}{Minimum confidence of the mined association rules}
+\item{confidence}{Minimum confidence of the mined association rules.}
 
-\item{minlen}{Minimum length of the mined association rules}
+\item{minlen}{Minimum length of the mined association rules.}
 
-\item{maxlen}{Maximum length of the mined association rules}
+\item{maxlen}{Maximum length of the mined association rules.}
+}
+\value{
+A data.frame of rules with columns \code{lhs}, \code{rhs}, \code{support},
+\code{confidence}, \code{coverage}, \code{lift} and \code{count}.
 }
 \description{
-This function creates transactions object required for association rule mining
+This function runs the apriori algorithm on a transactions object and returns
+the mined rules as a tidy data.frame. When apriori finds no rules an empty
+data.frame with the canonical rule columns is returned, so that downstream
+code can handle the "no rules" case without erroring.
 }
 \examples{
-create_rules(transactions, support, confidence, minlen, maxlen)
+\dontrun{
+create_rules(transactions, support = 0.01, confidence = 0.7,
+             minlen = 2, maxlen = 20)
+}
 }
