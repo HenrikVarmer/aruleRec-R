@@ -11,7 +11,9 @@
 #' @param maxlen Maximum length of the mined association rules
 #' @export
 #' @examples
+#' \dontrun{
 #' rule_flow(data, customerkey, productkey, support, confidence, minlen, maxlen)
+#' }
 
 rule_flow <- function(data, customerkey, productkey, support, confidence, minlen, maxlen) {
   

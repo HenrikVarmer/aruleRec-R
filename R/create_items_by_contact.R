@@ -6,7 +6,9 @@
 #' @param productkey The column containing item ID's
 #' @export
 #' @examples
+#' \dontrun{
 #' create_items_by_contact(data, customerkey, productkey)
+#' }
 
 create_items_by_contact <- function(data, customerkey, productkey){
   

@@ -26,5 +26,7 @@ rule_flow(data, customerkey, productkey, support, confidence, minlen,
 This function mines the association rules and preprocesses data by calling other functions in the library.
 }
 \examples{
+\dontrun{
 rule_flow(data, customerkey, productkey, support, confidence, minlen, maxlen)
+}
 }

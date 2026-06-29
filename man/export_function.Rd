@@ -13,5 +13,7 @@ export_function(...)
 Exports obejcts to globalenv
 }
 \examples{
+\dontrun{
 export_function(data)
+}
 }

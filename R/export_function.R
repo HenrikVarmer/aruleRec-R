@@ -3,7 +3,10 @@
 #' 
 #' @param ... Stuff that needs to be exported
 #' @export
-#' @examples export_function(data)
+#' @examples
+#' \dontrun{
+#' export_function(data)
+#' }
 
 export_function <- function(...) {
   arg.list      <- list(...)

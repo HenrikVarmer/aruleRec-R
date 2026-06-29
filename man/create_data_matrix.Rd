@@ -11,11 +11,15 @@ create_data_matrix(items_by_contact, productkey, value, customerkey)
 
 \item{productkey}{The column containing item ID's}
 
+\item{value}{The column containing the values used to fill the matrix}
+
 \item{customerkey}{The column containing customer ID's}
 }
 \description{
 This function creates a data matrix
 }
 \examples{
-ccreate_transactions(items_by_contact, productkey, customerkey)
+\dontrun{
+create_data_matrix(items_by_contact, productkey, value, customerkey)
+}
 }
