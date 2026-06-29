@@ -17,5 +17,7 @@ create_items_by_contact(data, customerkey, productkey)
 This creates a new dataframe with items by contacts
 }
 \examples{
+\dontrun{
 create_items_by_contact(data, customerkey, productkey)
+}
 }

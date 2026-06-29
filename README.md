@@ -1,5 +1,9 @@
 # aruleRec
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/HenrikVarmer/aruleRec/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/HenrikVarmer/aruleRec/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 ### Easy and fast recommendations with association rule learning in R
 
 Let's say all you know about your customers is their purchase history. With this data you want to generate individual recommendations representing cross-selling opportunities. How? [Association Rule Learning.](https://en.wikipedia.org/wiki/Association_rule_learning) This library relies on the [arules](https://cran.r-project.org/web/packages/arules/index.html) package for mining association rules and simply provides a wrapper for easy generation of recommendations with tidy datasets. 
@@ -16,7 +20,7 @@ There a three core functions in this package: ```aruleRec()```, ```aruleTrain()`
 
 ### aruleRec()
 
-The aruleRec() function takes a dataframe as input in tidy (long) format with one observation (customer-item pair) per row. The input data.frame must contain two columns: a customer ID and a product ID. The data.frame and column names are provided as arguments to the function, along with the hyperparameters for rule mining - confidence, support, minlen, and maxlen.
+The aruleRec() function takes a dataframe as input in tidy (long) format with one observation (customer-item pair) per row. The input data.frame must contain two columns: a customer ID and a product ID. The data.frame and column names are provided as arguments to the function, along with the hyperparameters for rule mining - confidence, support, minlen, and maxlen. The optional `nrec` argument limits the result to the top-N recommendations per customer (ranked by lift); it defaults to `NULL`, which returns all recommendations. If apriori finds no rules, the function returns an empty data.frame with the correct columns and emits an informative message rather than erroring.
 
 The aruleRec() function returns a dataframe with customers and corresponding cross-selling recommendations and rule quality parameters. Only customers with recommendations are returned.
 
@@ -45,7 +49,8 @@ recommendations <- aruleRec(data        = dat,      # dataframe
                             minlen      = 2, 
                             maxlen      = 20, 
                             support     = 0.01, 
-                            confidence  = 0.1)
+                            confidence  = 0.1,
+                            nrec        = 3)        # optional: keep only the top 3 recommendations per customer (by lift). Defaults to NULL (all)
 
 head(recommendations, 3)
 
@@ -91,15 +96,18 @@ predict <- arulePredict(rules,
                         newdata, 
                         Customer, 
                         Item, 
-                        keep_all = TRUE)
+                        keep_all = TRUE,
+                        nrec     = 3)   # optional top-N per customer; defaults to NULL (all)
 
 ```
 
 --------------------
 
 To do :pencil:
-* Seamlessly suport multiple input types (transaction data, tidy data, binary incidence matrix, etc.) 
-* Add support for no rules returned by apriori()
-* Add nrow support argument
+* Seamlessly suport multiple input types (transaction data, tidy data, binary incidence matrix, etc.)
 
 :heavy_check_mark: Add option to "keep all" or (default): keep only customers with recommendations (added 20/04/2019)
+
+:heavy_check_mark: Add support for no rules returned by apriori() — the functions now return an empty result with the correct columns and emit an informative message instead of erroring
+
+:heavy_check_mark: Add `nrec` argument to limit the number of recommendations returned per customer (top-N by lift)
