@@ -5,27 +5,39 @@
 \title{Easy and fast recommendations with association rule learning in R}
 \usage{
 aruleRec(data, productkey, customerkey, keep_all = FALSE,
-  support = 0.01, confidence = 0.7, minlen = 2,
-  maxlen = as.integer(length(unique(data$productkey)) + 1))
+  support = 0.01, confidence = 0.7, minlen = 2, maxlen = NULL,
+  nrec = NULL)
 }
 \arguments{
-\item{data}{A dataframe containing dataframe as input in tidy format with one customer-item pair per row. This data.frame must contain two columns: a customer ID and a product ID.}
+\item{data}{A data.frame in tidy (long) format with one customer-item pair per row. It must contain (at least) a customer ID column and a product ID column.}
 
-\item{productkey}{The column containing item ID's}
+\item{productkey}{The (unquoted) column containing the item/product IDs.}
 
-\item{customerkey}{The column containing customer ID's}
+\item{customerkey}{The (unquoted) column containing the customer IDs.}
 
-\item{support}{Minimum support of the mined association rules}
+\item{keep_all}{Logical. If \code{FALSE} (default) only customers for whom a recommendation could be generated are returned. If \code{TRUE} every customer is returned, with \code{NA} in the rule columns where no recommendation exists.}
 
-\item{confidence}{Minimum confidence of the mined association rules}
+\item{support}{Minimum support of the mined association rules.}
 
-\item{minlen}{Minimum length of the mined association rules}
+\item{confidence}{Minimum confidence of the mined association rules.}
 
-\item{maxlen}{Maximum length of the mined association rules}
+\item{minlen}{Minimum length of the mined association rules.}
+
+\item{maxlen}{Maximum length of the mined association rules. Defaults to the number of distinct products plus one.}
+
+\item{nrec}{Optional integer. If supplied, only the top \code{nrec} recommendations (ranked by lift, descending) are returned per customer. Defaults to \code{NULL}, which returns all recommendations.}
+}
+\value{
+A data.frame with one row per customer-recommendation pair, containing the customer ID, the item history, the recommended item and the rule quality metrics (support, confidence, coverage, lift, count). When the apriori algorithm finds no rules, an empty data.frame with the same columns is returned (and an informative message is emitted).
 }
 \description{
-The aruleRec function generates recommendations from an input dataframe.
+\code{aruleRec()} mines association rules from a tidy customer-item
+data.frame and turns them into per-customer cross-selling recommendations.
 }
 \examples{
-aruleRec(data = dat, productkey = ProductKey, customerkey = CustomerKey, keep_all = FALSE, minlen = 2, maxlen = 20, support = 0.01, confidence = 0.7)
+\dontrun{
+aruleRec(data = dat, productkey = ProductKey, customerkey = CustomerKey,
+         keep_all = FALSE, minlen = 2, maxlen = 20,
+         support = 0.01, confidence = 0.7, nrec = 3)
+}
 }

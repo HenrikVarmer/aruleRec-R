@@ -2,22 +2,36 @@
 % Please edit documentation in R/arulePredict.R
 \name{arulePredict}
 \alias{arulePredict}
-\title{Creates recommendations based on input association rules}
+\title{Generate recommendations from previously mined association rules}
 \usage{
-arulePredict(rules, newdata, customerkey, productkey)
+arulePredict(rules, newdata, customerkey, productkey, keep_all = FALSE,
+  nrec = NULL)
 }
 \arguments{
-\item{rules}{Association Rule Mining Training Vector Object}
+\item{rules}{A data.frame of association rules, e.g. the output of \code{\link{aruleTrain}}.}
 
-\item{newdata}{New input data.frame with customers and items}
+\item{newdata}{A new data.frame in tidy (long) format with one customer-item pair per row.}
 
-\item{customerkey}{The name of the Column containing customer ID's}
+\item{customerkey}{The (unquoted) column containing the customer IDs.}
 
-\item{productkey}{The name of the Column containing item/product ID's}
+\item{productkey}{The (unquoted) column containing the item/product IDs.}
+
+\item{keep_all}{Logical. If \code{FALSE} (default) only customers for whom a recommendation could be generated are returned. If \code{TRUE} every customer is returned, with \code{NA} in the rule columns where no recommendation exists.}
+
+\item{nrec}{Optional integer. If supplied, only the top \code{nrec} recommendations (ranked by lift, descending) are returned per customer. Defaults to \code{NULL}, which returns all recommendations.}
+}
+\value{
+A data.frame with one row per customer-recommendation pair. When the supplied rule set contains no usable rules, an empty data.frame with the same columns is returned (and an informative message is emitted).
 }
 \description{
-This function returns recommendations based on input association rules and a new unseen dataset
+\code{arulePredict()} takes a set of association rules (typically produced by
+\code{\link{aruleTrain}}) and applies them to a new tidy customer-item
+data.frame to produce per-customer cross-selling recommendations.
 }
 \examples{
-rule_predict(rules, newdata, customerkey, productkey)
+\dontrun{
+rules   <- aruleTrain(dat, ProductKey, CustomerKey)
+preds   <- arulePredict(rules, newdata, CustomerKey, ProductKey,
+                        keep_all = TRUE, nrec = 3)
+}
 }

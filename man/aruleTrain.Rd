@@ -2,30 +2,38 @@
 % Please edit documentation in R/aruleTrain.R
 \name{aruleTrain}
 \alias{aruleTrain}
-\title{Mines association rules from an input data.frame}
+\title{Mine association rules from a tidy data.frame}
 \usage{
 aruleTrain(data, productkey, customerkey, support = 0.01,
-  confidence = 0.7, minlen = 2,
-  maxlen = as.integer(length(unique(data$productkey)) + 1))
+  confidence = 0.7, minlen = 2, maxlen = NULL)
 }
 \arguments{
-\item{data}{A dataframe containing dataframe as input in tidy format with one customer-item pair per row. This data.frame must contain two columns: a customer ID and a product ID.}
+\item{data}{A data.frame in tidy (long) format with one customer-item pair per row. It must contain a customer ID column and a product ID column.}
 
-\item{productkey}{The column containing item ID's}
+\item{productkey}{The (unquoted) column containing the item/product IDs.}
 
-\item{customerkey}{The column containing customer ID's}
+\item{customerkey}{The (unquoted) column containing the customer IDs.}
 
-\item{support}{Minimum support of the mined association rules}
+\item{support}{Minimum support of the mined association rules.}
 
-\item{confidence}{Minimum confidence of the mined association rules}
+\item{confidence}{Minimum confidence of the mined association rules.}
 
-\item{minlen}{Minimum length of the mined association rules}
+\item{minlen}{Minimum length of the mined association rules.}
 
-\item{maxlen}{Maximum length of the mined association rules}
+\item{maxlen}{Maximum length of the mined association rules. Defaults to the number of distinct products plus one.}
+}
+\value{
+A data.frame of mined association rules with their quality metrics. When apriori finds no rules an empty data.frame with the same columns is returned (and an informative message is emitted).
 }
 \description{
-This function mnes association rules from an input data.frame but does nothing more
+\code{aruleTrain()} mines association rules from a tidy customer-item
+data.frame and returns them so they can later be reused for prediction with
+\code{\link{arulePredict}}.
 }
 \examples{
-aruleTrain(data, productkey, customerkey, cupport, confidence, minlen, maxlen)
+\dontrun{
+rules <- aruleTrain(data = dat, productkey = ProductKey,
+                    customerkey = CustomerKey, support = 0.01,
+                    confidence = 0.7, minlen = 2, maxlen = 20)
+}
 }
