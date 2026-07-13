@@ -1,5 +1,9 @@
 # aruleRec
 
+> [!NOTE]
+> **The primary, actively developed version is now the Python package [`arulerec`](https://github.com/HenrikVarmer/arulerec).** This repository is the original R implementation (a wrapper around the `arules` package).
+
+
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/HenrikVarmer/aruleRec/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/HenrikVarmer/aruleRec/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
