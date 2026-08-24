@@ -9,8 +9,8 @@ Description: aruleRec wraps the 'arules' package to turn tidy (long) customer-it
     hyperparameters (confidence, support, minlen, maxlen) are supplied as
     arguments.
 License: MIT + file LICENSE
-URL: https://github.com/HenrikVarmer/aruleRec
-BugReports: https://github.com/HenrikVarmer/aruleRec/issues
+URL: https://github.com/HenrikVarmer/aruleRec-R
+BugReports: https://github.com/HenrikVarmer/aruleRec-R/issues
 Depends:
     R (>= 3.5.1),
     arules,
