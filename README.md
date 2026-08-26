@@ -5,7 +5,7 @@
 
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/HenrikVarmer/aruleRec/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/HenrikVarmer/aruleRec/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/HenrikVarmer/aruleRec-R/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/HenrikVarmer/aruleRec-R/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ### Easy and fast recommendations with association rule learning in R
@@ -17,7 +17,7 @@ Install the package directly from github with devtools. Run the first line if yo
 
 ```R
 # install.packages('devtools') 
-devtools::install_github('HenrikVarmer/aruleRec')
+devtools::install_github('HenrikVarmer/aruleRec-R')
 ```
 ### Using the functions
 There a three core functions in this package: ```aruleRec()```, ```aruleTrain()```, ```arulePredict()```. 
