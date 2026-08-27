@@ -20,7 +20,7 @@ Install the package directly from github with devtools. Run the first line if yo
 devtools::install_github('HenrikVarmer/aruleRec-R')
 ```
 ### Using the functions
-There a three core functions in this package: ```aruleRec()```, ```aruleTrain()```, ```arulePredict()```. 
+There are three core functions in this package: ```aruleRec()```, ```aruleTrain()```, ```arulePredict()```. 
 
 ### aruleRec()
 
@@ -41,7 +41,7 @@ The ideal input data structure contains customers in one column, and products in
 
 ### Example usage of aruleRec() function:
 
-Load your data and apply the aruleRec() function. Supply the dataframe, the item column name, the customer column name, as well as parameters for the association rule mining algorithm. The optional keep_all argument defines weather all customers should be returned, or only those where the algorithm can make a recommendation. 
+Load your data and apply the aruleRec() function. Supply the dataframe, the item column name, the customer column name, as well as parameters for the association rule mining algorithm. The optional keep_all argument defines whether all customers should be returned, or only those where the algorithm can make a recommendation. 
 
 ```R
 dat <- read.csv("your_sales_data.csv")
@@ -62,13 +62,13 @@ head(recommendations, 3)
 
 ### Example output:
 
-In the output dataframe returned from the aruleRec() function, the 'item_history' column constitutes the customer purchase history. The 'recommendation' column indicates the cross-selling opportunity based on the mined association rules, along with key metrics support (the frequency with which the rule set appears in data), confidence (how often the rules is true), lift (how non-random the rules is), and count (how often the rule occurs in data).
+In the output dataframe returned from the aruleRec() function, the 'item_history' column constitutes the customer purchase history. The 'recommendation' column indicates the cross-selling opportunity based on the mined association rules, along with the metrics support (the frequency with which the rule set appears in data), confidence (how often the rule is true), coverage (how often the purchase history appears in data), lift (how non-random the rule is), and count (how often the rule occurs in data).
 
-| item_history    | customer   |	recommendation  |	support   | confidence  | lift   |	count  |
-|----------------:|-----------:|-----------------:|----------:|------------:|-------:|--------:|
-| 20,23,24,27     |     1001   |	           29   |	0.01      | 0.73	      | 4.24   |	  1305 |
-| 22,27,33        |     1002   |	           20   |	0.01      | 0.85	      | 1.97   |	  1453 |
-| 11,20,33        |     1003   |	           27   |	0.08      | 0.75	      | 1.42   |	  1151 |
+| item_history    | customer   |	recommendation  |	support   | confidence  | coverage | lift   |	count  |
+|----------------:|-----------:|-----------------:|----------:|------------:|---------:|-------:|--------:|
+| 20,23,24,27     |     1001   |	           29   |	0.01      | 0.73	      | 0.01     | 4.24   |	  1305 |
+| 22,27,33        |     1002   |	           20   |	0.01      | 0.85	      | 0.01     | 1.97   |	  1453 |
+| 11,20,33        |     1003   |	           27   |	0.08      | 0.75	      | 0.11     | 1.42   |	  1151 |
 
 ### aruleTrain()
 
