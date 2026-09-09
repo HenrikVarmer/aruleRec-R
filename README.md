@@ -108,7 +108,7 @@ predict <- arulePredict(rules,
 --------------------
 
 To do :pencil:
-* Seamlessly suport multiple input types (transaction data, tidy data, binary incidence matrix, etc.)
+* Seamlessly support multiple input types (transaction data, tidy data, binary incidence matrix, etc.)
 
 :heavy_check_mark: Add option to "keep all" or (default): keep only customers with recommendations (added 20/04/2019)
 
