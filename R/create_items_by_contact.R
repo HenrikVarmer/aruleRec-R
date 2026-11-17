@@ -1,4 +1,4 @@
-#' Create Signups By Contact
+#' Create items by contact
 #'
 #' This creates a new dataframe with items by contacts
 #' @param data A dataframe containing dataframe as input in tidy format with one customer-item pair per row. This data.frame must contain two columns: a customer ID and a product ID.

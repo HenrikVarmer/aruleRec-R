@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_items_by_contact.R
 \name{create_items_by_contact}
 \alias{create_items_by_contact}
-\title{Create Signups By Contact}
+\title{Create items by contact}
 \usage{
 create_items_by_contact(data, customerkey, productkey)
 }

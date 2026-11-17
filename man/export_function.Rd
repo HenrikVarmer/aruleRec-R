@@ -2,7 +2,7 @@
 % Please edit documentation in R/export_function.R
 \name{export_function}
 \alias{export_function}
-\title{Exports obejcts to globalenv}
+\title{Exports objects to globalenv}
 \usage{
 export_function(...)
 }
@@ -10,7 +10,7 @@ export_function(...)
 \item{...}{Stuff that needs to be exported}
 }
 \description{
-Exports obejcts to globalenv
+Exports objects to globalenv
 }
 \examples{
 \dontrun{
