@@ -1,4 +1,4 @@
-#' Exports obejcts to globalenv
+#' Exports objects to globalenv
 #'
 #' 
 #' @param ... Stuff that needs to be exported
